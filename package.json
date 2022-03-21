@@ -2,7 +2,7 @@
   "name": "notes-app",
   "version": "1.0.0",
   "description": "Note-taking application built using the MERN stack.",
-  "main": "server/server.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
