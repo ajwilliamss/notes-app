@@ -1,0 +1,318 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap");
+
+/* Variables */
+:root {
+  --white: rgb(240, 240, 240);
+  --dark: rgb(20, 20, 20);
+  --darkNote: rgb(51, 51, 51);
+  --lightNote: rgb(255, 250, 130);
+  --dark-bg: rgb(24, 24, 24);
+  --light-bg: rgb(255, 255, 255);
+  --error: rgb(220, 0, 0);
+  --success: rgb(0, 185, 0);
+  --grey: rgb(211, 211, 211);
+}
+
+/* Universal Reset */
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--light-bg);
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.notes-app {
+  width: 100%;
+  min-height: 100vh;
+  color: var(--dark);
+}
+
+/* Navigation bar */
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  min-height: 85px;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 0 2px var(--dark);
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  text-transform: uppercase;
+}
+
+.nav-items {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logo a,
+.nav-item a {
+  text-decoration: none;
+  color: var(--dark);
+}
+
+.nav-item a:hover {
+  opacity: 0.8;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: var(--grey);
+  padding: 0.45rem;
+  margin: 0.25rem;
+  border-radius: 5px;
+  width: 350px;
+}
+
+.search-bar input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  margin-left: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.toggle-btn {
+  background-color: var(--grey);
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Login & register form */
+.login,
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+  justify-content: center;
+}
+
+.login-wrapper,
+.register-wrapper {
+  width: 350px;
+}
+
+.login-wrapper h1,
+.register-wrapper h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.login-fields,
+.register-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-fields input,
+.register-fields input {
+  font-size: 0.9rem;
+  border: 1px solid var(--dark-bg);
+}
+
+.login-fields input,
+.login-btn,
+.register-fields input,
+.register-btn {
+  padding: 0.75rem;
+  margin: 0.75rem 0;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.login-btn,
+.register-btn {
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: var(--dark-bg);
+  color: var(--white);
+  transition: 0.25s ease-in;
+}
+
+.login-btn:hover,
+.register-btn:hover {
+  opacity: 0.8;
+}
+
+.account {
+  font-size: 1.05rem;
+}
+
+.account a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: bold;
+}
+
+.error-message {
+  color: var(--error);
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.success-message {
+  color: var(--success);
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+/* Notes */
+.notes {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+.heading {
+  text-align: center;
+}
+
+.note {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--lightNote);
+  width: 350px;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 5px;
+  white-space: pre-wrap;
+}
+
+.note-text {
+  margin: 1rem 0;
+}
+
+.note-footer {
+  display: flex;
+}
+
+.note-date {
+  font-weight: bold;
+}
+
+.note-btns {
+  margin-left: auto;
+}
+
+.note-btns button {
+  margin-left: 0.75rem;
+  background: transparent;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 2px var(--dark);
+  padding: 1rem 0;
+  overflow: hidden;
+}
+
+/* Create note styles */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0;
+}
+
+.form-group input {
+  padding: 0.25rem;
+}
+
+.form-group textarea {
+  resize: none;
+  padding: 0.25rem;
+}
+
+.create-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.15s ease-in;
+}
+
+.create-btn:hover {
+  background-color: var(--grey);
+}
+
+/* Spinner */
+.spinner-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(36, 36, 36, 0.5);
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 80px;
+  height: 80px;
+  border: 8px solid;
+  border-color: #000 transparent #555 transparent;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+  margin-bottom: 7.5rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Media queries */
+@media screen and (max-width: 500px) {
+  .nav-items {
+    margin-bottom: 0.5rem;
+  }
+  .search-bar {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 370px) {
+  .login-wrapper,
+  .register-wrapper {
+    width: 90%;
+  }
+  .note {
+    width: 90%;
+  }
+}
