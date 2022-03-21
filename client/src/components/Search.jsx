@@ -13,7 +13,7 @@ const Search = () => {
         name="search"
         id="search"
         placeholder="Type to search..."
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => setSearch(e.target.value.toLowerCase())}
       />
     </div>
   );
