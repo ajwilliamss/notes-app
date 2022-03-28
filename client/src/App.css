@@ -159,6 +159,10 @@ button {
   opacity: 0.8;
 }
 
+.register-btn:disabled {
+  cursor: not-allowed;
+}
+
 .account {
   font-size: 1.05rem;
 }

@@ -143,7 +143,13 @@ const Register = () => {
               required
               onChange={getUserInput}
             />
-            <button type="submit" className="register-btn">
+            <button
+              type="submit"
+              className="register-btn"
+              disabled={
+                !validUsername || !validPassword || !isValid ? true : false
+              }
+            >
               Register
             </button>
             <p className="account">
