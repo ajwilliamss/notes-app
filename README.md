@@ -8,7 +8,7 @@ A user can register an account by entering a username, email, and password. They
 
 # View the site here:
 
-[Heroku Link](https://ajnotesapp.herokuapp.com/)
+## https://ajnotesapp.herokuapp.com/
 
 # How to use the app:
 
