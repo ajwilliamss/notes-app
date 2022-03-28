@@ -146,9 +146,7 @@ const Register = () => {
             <button
               type="submit"
               className="register-btn"
-              disabled={
-                !validUsername || !validPassword || !isValid ? true : false
-              }
+              disabled={!validUsername || !validPassword ? true : false}
             >
               Register
             </button>
