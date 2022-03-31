@@ -8,7 +8,7 @@ const Nav = () => {
 
   // Logout user
   const logoutUser = () => {
-    localStorage.clear();
+    localStorage.removeItem("token");
     setIsLogin(false);
   };
 

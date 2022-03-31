@@ -11,15 +11,15 @@ const registerUser = async (req, res) => {
 
     // Check fields
     if (!username || !email || !password) {
-      res.status(400);
-      throw new Error("Please add all fields");
+      return res.status(400).json({ message: "Please add all fields" });
     }
 
     // Check if user exists
     const userExists = await User.findOne({ email });
+
+    // If user exists
     if (userExists) {
-      res.status(400);
-      throw new Error("User already exists");
+      return res.status(400).json({ message: "User already exists" });
     }
 
     // Hash password
@@ -42,12 +42,11 @@ const registerUser = async (req, res) => {
         message: "Successfully registered! Please log in",
       });
     } else {
-      res.status(400);
-      throw new Error("Invalid user data");
+      return res.status(400).json({ message: "Invalid user data" });
     }
   } catch (error) {
     console.error(error);
-    res.json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -58,18 +57,20 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Check for user email
+    // Check for user
     const user = await User.findOne({ email });
+
+    // If user not found
     if (!user) {
-      res.status(400);
-      throw new Error("User does not exist");
+      return res.status(400).json({ message: "User does not exist" });
     }
 
     // Check password
     const isMatch = await bcrypt.compare(password, user.password);
+
+    // If not a match
     if (!isMatch) {
-      res.status(400);
-      throw new Error("Incorrect password");
+      return res.status(400).json({ message: "Incorrect password" });
     }
 
     // If user exists and password correct
@@ -83,7 +84,7 @@ const loginUser = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -92,16 +93,18 @@ const loginUser = async (req, res) => {
 // @access  Private
 const getUser = async (req, res) => {
   try {
+    // Find user
     const user = await User.findById(req.user.id).select("-password");
+
+    // If user not found
     if (!user) {
-      res.status(404);
-      throw new Error("User not found");
+      return res.status(404).json({ message: "User not found" });
     }
 
     res.status(200).json(user);
   } catch (error) {
     console.error(error);
-    res.json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 

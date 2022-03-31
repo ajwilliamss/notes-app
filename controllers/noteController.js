@@ -9,7 +9,7 @@ const getNotes = async (req, res) => {
     res.status(200).json(notes);
   } catch (error) {
     console.error(error);
-    res.json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -22,8 +22,9 @@ const addNote = async (req, res) => {
 
     // Check fields
     if (!title || !text || !date) {
-      res.status(400);
-      throw new Error("Please add a title, text, and date");
+      return res
+        .status(400)
+        .json({ message: "Please add a title, text, and date" });
     }
 
     // Add note
@@ -37,7 +38,7 @@ const addNote = async (req, res) => {
     res.status(201).json(note);
   } catch (error) {
     console.error(error);
-    res.json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -50,26 +51,23 @@ const getNote = async (req, res) => {
 
     // Check for note
     if (!note) {
-      res.status(404);
-      throw new Error("Note not found");
+      return res.status(404).json({ message: "Note not found" });
     }
 
     // Check for user
     if (!req.user) {
-      res.status(404);
-      throw new Error("User not found");
+      return res.status(404).json({ message: "User not found" });
     }
 
     // Check if logged in user matches note user
     if (note.user.toString() !== req.user.id) {
-      res.status(401);
-      throw new Error("Unauthorized user");
+      return res.status(401).json({ message: "Unauthorized user" });
     }
 
     res.status(200).json(note);
   } catch (error) {
     console.error(error);
-    res.json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -84,26 +82,24 @@ const updateNote = async (req, res) => {
 
     // Check for note
     if (!note) {
-      res.status(404);
-      throw new Error("Note not found");
+      return res.status(404).json({ message: "Note not found" });
     }
 
     // Check for user
     if (!req.user) {
-      res.status(404);
-      throw new Error("User not found");
+      return res.status(404).json({ message: "User not found" });
     }
 
     // Check if logged in user matches note user
     if (note.user.toString() !== req.user.id) {
-      res.status(401);
-      throw new Error("Unauthorized user");
+      return res.status(401).json({ message: "Unauthorized user" });
     }
 
     // Check fields
     if (!title || !text || !date) {
-      res.status(400);
-      throw new Error("Please add a title, text, and date");
+      return res
+        .status(400)
+        .json({ message: "Please add a title, text, and date" });
     }
 
     const updatedNote = await Note.findByIdAndUpdate(req.params.id, req.body, {
@@ -113,7 +109,7 @@ const updateNote = async (req, res) => {
     res.status(200).json(updatedNote);
   } catch (error) {
     console.error(error);
-    res.json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -126,20 +122,17 @@ const deleteNote = async (req, res) => {
 
     // Check for note
     if (!note) {
-      res.status(404);
-      throw new Error("Note not found");
+      return res.status(404).json({ message: "Note not found" });
     }
 
     // Check for user
     if (!req.user) {
-      res.status(404);
-      throw new Error("User not found");
+      return res.status(404).json({ message: "User not found" });
     }
 
     // Check if the logged in user matches note user
     if (note.user.toString() !== req.user.id) {
-      res.status(401);
-      throw new Error("Unauthorized user");
+      return res.status(401).json({ message: "Unauthorized user" });
     }
 
     const deletedNote = await Note.findByIdAndDelete(req.params.id);
@@ -147,7 +140,7 @@ const deleteNote = async (req, res) => {
     res.status(200).json(deletedNote);
   } catch (error) {
     console.error(error);
-    res.json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
