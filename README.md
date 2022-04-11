@@ -1,6 +1,6 @@
 # Notes Application
 
-Full stack application built using the MERN stack (MongoDB, Express, React, and Node).
+Full stack application built using the MERN stack (MongoDB, Express, React and Node).
 
 # Summary
 
