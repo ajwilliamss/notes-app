@@ -23,3 +23,7 @@ https://ajnotesapp.herokuapp.com/
 - To delete a note, click the red icon located at the bottom of the note.
 
 - Use the search bar to search for a specific note.
+
+# Screenshot:
+
+![notes app](https://github.com/ajwilliamss/notes-app/blob/main/notesapp.png)
