@@ -10,6 +10,10 @@ A user can register an account by entering a username, email, and password. They
 
 https://ajnotesapp.herokuapp.com/
 
+# Screenshot:
+
+![notes app](https://github.com/ajwilliamss/notes-app/blob/main/notesapp.png)
+
 # How to use the app:
 
 - Upon loading the app, you can either log in or follow the link to register an account.
@@ -23,7 +27,3 @@ https://ajnotesapp.herokuapp.com/
 - To delete a note, click the red icon located at the bottom of the note.
 
 - Use the search bar to search for a specific note.
-
-# Screenshot:
-
-![notes app](https://github.com/ajwilliamss/notes-app/blob/main/notesapp.png)
